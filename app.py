@@ -37,8 +37,8 @@ def result():
                     return 4
                 elif facility == "school":
                     return 8
-                elif facility == "industrial factory":
-                    return 24
+                # elif facility == "industrial factory":
+                #     return 24
                 elif facility == "hospital":
                     return 24
                 elif facility == "hotel":
@@ -53,8 +53,8 @@ def result():
                     return 8
                 elif facility == "shop":
                     return 10
-                elif facility == "outside air (lab, hospital)":
-                    return 12
+                # elif facility == "outside air (lab, hospital)":
+                #     return 12
                 else:
                     return 12
             def get_airflow(self):
@@ -93,8 +93,8 @@ def result():
                     return area * convert_air * 2.0
                 elif facility == "school":
                     return area * convert_air * 1.6
-                elif facility == "industrial factory": #to be removed
-                    return area * convert_air * 3.2
+                # elif facility == "industrial factory": #to be removed
+                #     return area * convert_air * 3.2
                 elif facility == "hospital":
                     return area * convert_air * 1.3
                 elif facility == "hotel":
@@ -109,8 +109,8 @@ def result():
                     return area * convert_air * 0.9
                 elif facility == "shop":
                     return area * convert_air * 8.0
-                elif facility == "outside air (lab, hospital)": #to be removed
-                    return area * convert_air * 1.3
+                # elif facility == "outside air (lab, hospital)": #to be removed
+                #     return area * convert_air * 1.3
                 else:
                     return area * convert_air * 1.2
 
@@ -220,7 +220,8 @@ def result():
         def bca_output():
             facility = response['facility']
             size = float(response['buildingSize'])
-            eui = bca_eui().calc_eui(size,kWh_yr)
+            btype = facility
+            eui = bca_eui().calc_eui(size,kWh_yr,btype)
             myList = ["office", "hotel", "shop", "school", "hospital", "library", "auditorium"]
             if facility in myList:
                 if size >= 5000.0:

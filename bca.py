@@ -10,7 +10,7 @@ class bca_eui():
     #         cfg = json.load(f)
     #         return cfg
 
-    def calc_eui(self, buildingSize, kWh_yr):
+    def calc_eui(self, buildingSize, kWh_yr, buildingType):
         """
         calculating the building's carbon emissions
         recomendation to achieve higher quartile
@@ -18,10 +18,16 @@ class bca_eui():
         source: https://www.bca.gov.sg/bess/benchmarkingreport/benchmarkingreport.aspx
         """
         #calculating EUI
-        aircon_ratio = 0.6
-        overall_energy = kWh_yr / aircon_ratio
-        eui = float(overall_energy) / float(buildingSize)
-        return eui
+        if buildingType == "data center":
+            aircon_ratio = 0.6
+            overall_energy = kWh_yr / aircon_ratio
+            eui = float(overall_energy) / float(buildingSize)
+            return eui
+        else: 
+            aircon_ratio = 0.38
+            overall_energy = kWh_yr / aircon_ratio
+            eui = float(overall_energy) / float(buildingSize)
+            return eui
     
     def getQuartile(self, response, size, eui):
         """
